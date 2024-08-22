@@ -31,9 +31,7 @@ const Login = () => {
                     displayName: fname.current.value
                   }).then(() => {
                     const {uid, email, displayName} = auth.currentUser;
-                    dispatch(createUser({uid:uid,email:email, displayName:displayName}));
-                    navigate("/browse");
-                    
+                    dispatch(createUser({uid:uid,email:email, displayName:displayName})); 
                   }).catch((error) => {
                     console.log(error);
                   });
@@ -46,9 +44,6 @@ const Login = () => {
             signInWithEmailAndPassword(auth, email.current.value,password.current.value)
             .then((userCredential) => {
                 const user = userCredential.user;
-                const {uid, email, displayName} = auth.currentUser;
-                 dispatch(createUser({uid:uid,email:email, displayName:displayName}));
-                 navigate("/browse");
             })
             .catch((error) => {
                 const errorMessage = error.message;

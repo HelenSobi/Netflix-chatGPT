@@ -1,17 +1,34 @@
-import { signOut } from "firebase/auth";
+import { signOut,onAuthStateChanged } from "firebase/auth";
 import {auth} from '../utils/firebase'
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import { useSelector,useDispatch } from "react-redux";
-import {deleteUser} from '../utils/userSlice';
+import { createUser,deleteUser } from "../utils/userSlice.jsx";
+import { LOGO } from "../utils/constants.jsx";
 
 const Header = () => {
     const navigate=useNavigate();
     const dispatch=useDispatch();
     const user=useSelector((store) => store.user);
+    useEffect(()=>{
+        const unsubscribe = onAuthStateChanged(auth, (user) => {    //firebase utility
+        if (user) {
+            // User is signed in
+            //console.log("in")
+            const {uid, email, displayName} = user;
+            dispatch(createUser({uid:uid,email:email, displayName:displayName}));
+            navigate("/browse"); // if the user is signed in redirect to browse page     
+        } else {
+            // User is signed out
+            dispatch(deleteUser());
+            navigate("/");
+        }
+        });
+        return ()=>unsubscribe();
+    },[])
+
     const handleSignOut=()=>{
         signOut(auth).then(() => {
-            dispatch(deleteUser());
-            navigate("/")
           }).catch((error) => {
             console.log(error)
           });
@@ -20,8 +37,7 @@ const Header = () => {
         <header>
             <div className="absolute z-50 w-full p-2">
                 <div className="flex justify-between">
-                <img className="w-24 md:w-40" src="
-    https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"/>  
+                <img className="w-24 md:w-40" src={LOGO}/>  
                 {user && (
                 <div className="flex">
                     <div>

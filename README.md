@@ -79,9 +79,14 @@ App hosted at `https://netflixgpt-2024-aug.firebaseapp.com/`
 17. dispatch actions to the store:
     - whenever the user signIn/ SignUp/ SignOut we need to dipatch the action each time. 
     - so to avoid this there is an utility provided by firebase called `onAuthStateChanged`. use this to dipatch an action.
-18. `onAuthStateChanged` is like an event listener calls only one time. So `useEffect` hook is used.
-19.  once user signedIn redirect to `browse` page
-20. Browse Page Header
+    - `onAuthStateChanged` is like an event listener calls only one time. So `useEffect` hook is used.
+    - `onAuthStateChanged` is used in header.jsx(if it is called in app.jsx routing error may happen)
+18. implemented Signout
+19. updata User profile after creating a user and redirect to `/browse`
+20.  Bug Fix: 
+        - update displayname in `header.jsx`
+        - If user is not loggedIn redirect from `/browse` to `login` page.
+21. Browse Page Header UI
     - logo
     - home
     - Movies
@@ -89,6 +94,8 @@ App hosted at `https://netflixgpt-2024-aug.firebaseapp.com/`
     - Search
     - username
     - avatar
+22. unsubcribe to the `onAuthStateChanged` callback when component unmounts.
+23. put contants in one file
 ### 
 
 

@@ -1,21 +1,14 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { createUser,deleteUser } from "../utils/userSlice.jsx";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../utils/firebase.jsx";
+import { HOME_BG_URL } from "../utils/constants";
 import Login from "../components/Login";
 
 function Home() {
-  const dispatch=useDispatch();
-  const navigate = useNavigate();
 
   return (
     <>
       <div>
         <div className="flex h-screen relative overflow-hidden bg-gradient-to-t bg-black">
            <div className="absolute inset-0">
-                <img className="object-cover object-center w-full h-full bg-transparent opacity-30" src="https://assets.nflxext.com/ffe/siteui/vlv3/031c42b9-0c81-4db5-b980-0160765188e9/36c66c02-cf19-40d2-ba6c-789712478afd/AE-en-20240819-TRIFECTA-perspective_WEB_30ca3a23-6077-4a0a-be1b-774dd793229e_small.jpg"/>
+                <img className="object-cover object-center w-full h-full bg-transparent opacity-30" src={HOME_BG_URL}/>
             </div>
             <div className="relative z-10 flex justify-center items-center h-full bg-transparent w-full">
             <Login/>
@@ -30,6 +23,8 @@ function Home() {
 
 export default Home;
 
+
+/*Atomatic signIn */
 // useEffect(()=>{
 //     onAuthStateChanged(auth, (user) => {    //firebase utility
 //       if (user) {
