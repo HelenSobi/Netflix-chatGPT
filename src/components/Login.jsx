@@ -21,45 +21,36 @@ const Login = () => {
         e.preventDefault();
         const validateMsg=formValidate(email.current.value,password.current.value);
         setIsError(validateMsg);
-
         if(validateMsg) return ;
-
         if(!isLogin){
-            //
             createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
             .then((userCredential) => {
                 // Signed up 
                 const user = userCredential.user;
-                //console.log(user);
                 updateProfile(auth.currentUser, {
                     displayName: fname.current.value
                   }).then(() => {
                     const {uid, email, displayName} = auth.currentUser;
-                   // console.log(auth.currentUser);
                     dispatch(createUser({uid:uid,email:email, displayName:displayName}));
-                    //console.log("Profile updated with "+displayName);
                     navigate("/browse");
                     
-                    // ...
                   }).catch((error) => {
                     console.log(error);
-                    // ...
                   });
             })
             .catch((error) => {
-                //const errorCode = error.code;
                 const errorMessage = error.message;
                 setIsError(errorMessage);
             });
         } else{
             signInWithEmailAndPassword(auth, email.current.value,password.current.value)
             .then((userCredential) => {
-                // Signed in 
                 const user = userCredential.user;
-                //console.log(user);
+                const {uid, email, displayName} = auth.currentUser;
+                 dispatch(createUser({uid:uid,email:email, displayName:displayName}));
+                 navigate("/browse");
             })
             .catch((error) => {
-                //const errorCode = error.code;
                 const errorMessage = error.message;
                 setIsError(errorMessage);
             });
