@@ -1,10 +1,9 @@
 import { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import {createUserWithEmailAndPassword, signInWithEmailAndPassword,updateProfile} from "firebase/auth";
 import { auth } from "../utils/firebase";
 import {formValidate} from '../utils/validate';
-import {createUser} from '../utils/userSlice';
+import {createUser} from '../store/userSlice';
 
 const Login = () => {
     const [isLogin, setIsLogin] = useState(true);
@@ -13,7 +12,6 @@ const Login = () => {
     const email = useRef(null);
     const password = useRef(null);
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const toggleForm=()=>{
         setIsLogin(!isLogin);
     }

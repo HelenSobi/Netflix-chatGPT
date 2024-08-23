@@ -95,23 +95,41 @@ App hosted at `https://netflixgpt-2024-aug.firebaseapp.com/`
     - username
     - avatar
 22. unsubcribe to the `onAuthStateChanged` callback when component unmounts.
-23. put contants in one file
-### 
+23. put image contants in one file
+24. Register for TMDB API and create an application and get access token
+    - generate authentication key
+    - read documentaion
+25. created `constants_api.jsx` and copy the api options 
+25. make api call from `browse.jsx` and list down `now playing movies`
+26. fetch data from TMDB API and store in redux store
+27. create a custom hook and put all those api logic in that. so our code(`browse.jsx`) will be clean.
+28. building browse page UI
+-  Created movieSlice
+- update store with now playing movies data
+- planning for video container
+- read first movie data from store using `nowPlayingMovies` 
+- created custom hook for fetch trailer video of first movie
+- update store with trailer video data
+- read trailer key from store and update `VideoBg.jsx` with video
+- embed youtube video using iframe and make it autoplay
+- 
 
 
-### Features
+### begining of structure of UI  ####
 1. home page
+    - Header
     - login/signup form
     - redirect to browse page
 2. Browse (after authentication)
     - Header
-    - Main movie
-        - tailer in background
-        - title & description
+    - Main container
+        - recent movie tailer in background
+            - title & description
         - movie suggestions
-            -movielists
+            - movielists
+                - cards
         
-
+### ending of structure of UI  ####
 
 
 
@@ -150,3 +168,11 @@ App hosted at `https://netflixgpt-2024-aug.firebaseapp.com/`
         ::-moz-placeholder {
         color: gray;
         }
+
+### formatting code in Visual Studio Code
+Mac (macOS): Shift + Option + F 
+
+
+Bug Fix:
+1. change CSS in iframe video
+2. 

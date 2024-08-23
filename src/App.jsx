@@ -1,14 +1,12 @@
-import { Provider } from 'react-redux';
-import appStore from './utils/appStore.jsx';
-import Home from './pages/Home.jsx'
-import Header from './components/Header.jsx';
+import Home from './pages/Home'
 
 function App() {
 
   return (
     <>
-      <Header/>
-      <Home/>
+     <Home/>
+      {/* <Header/>
+      <Home/> */}
     </>  
   )
 }
