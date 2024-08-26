@@ -1,16 +1,16 @@
 
 import NavBarHeader from "../components/NavBarHeader";
 import VideoContainer from "../components/VideoContainer";
-import useNowPlayingMoviesApi from "../hooks/useNowPlayingMoviesApi";
-import NowPlaying from '../components/NowPlaying';
+import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
+import NowPlayingSlider from "../components/NowPlayingSlider";
 
 const Browse = () => {
-    useNowPlayingMoviesApi();
+    useNowPlayingMovies();
     return (
         <>
         <NavBarHeader/>
         <VideoContainer/>
-        <NowPlaying/>
+        <NowPlayingSlider/>
         </>
     )
 }

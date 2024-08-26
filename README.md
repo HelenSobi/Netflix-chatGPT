@@ -14,6 +14,18 @@ Create React project using the following command
 6. install firebase CLI
 `npm install -g firebase-tools`
 
+7. install react slick-slider
+
+`npm install react-slick`
+
+Also install slick-carousel for css and font
+`npm install slick-carousel`
+
+### Import css files
+`import "slick-carousel/slick/slick.css";`
+`import "slick-carousel/slick/slick-theme.css";`
+
+
 ###### Steps for deployment
 
 7. Login with firebase
@@ -39,8 +51,10 @@ logged as helensobia29@gmail.com
 11. Bind to react
 `npm install react-redux`
 
-12.
-App hosted at `https://netflixgpt-2024-aug.firebaseapp.com/`
+12. App hosted at 
+
+`https://netflixgpt-2024-aug.firebaseapp.com/`
+
 
 ###### Firebase Authentication:
 

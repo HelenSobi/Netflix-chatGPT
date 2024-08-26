@@ -5,9 +5,9 @@ import { auth} from '../utils/firebase'
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector,useDispatch } from "react-redux";
-import { createUser,deleteUser } from "../store/userSlice.jsx";
+import { createUser,deleteUser } from "../store/userSlice";
 
-const NavBarHeader = () => {
+const NavBarHeader = ({background = null}) => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate=useNavigate();
     const dispatch=useDispatch();
@@ -18,7 +18,7 @@ const NavBarHeader = () => {
             // User is signed in
             const {uid, email, displayName} = user;
             dispatch(createUser({uid:uid,email:email, displayName:displayName}));
-            navigate("/browse"); // if the user is signed in redirect to browse page     
+            //navigate("/browse"); // if the user is signed in redirect to browse page     
         } else {
             dispatch(deleteUser());
             navigate("/");
@@ -35,10 +35,10 @@ const NavBarHeader = () => {
     }
   return (
     
-      <header className="absolute z-50 w-full">
+      <header className={`absolute z-50 w-full ${background} ${isOpen && "bg-black"}`}>
         <nav className="flex flex-wrap items-center justify-between p-3">
-          <Link to="/" className="flex items-center">
-            <img src={LOGO} className="mr-3 w-24 md:w-40" alt="Netflix Logo" />
+          <Link to="/browse" className="flex items-center">
+            <img src={LOGO} className="w-24 md:w-40" alt="Netflix Logo" />
           </Link>
           {user && ( <>
           <div className="block md:hidden">
@@ -65,44 +65,38 @@ const NavBarHeader = () => {
           <div
             className={`${
               isOpen ? "block" : "hidden"
-            } w-full md:w-auto md:flex text-right text-bold mt-5 md:mt-0 md:border-none`}
+            } w-full block md:w-auto md:flex text-right text-bold mt-5 md:mt-0 md:border-none`}
           >
             <Link
               onClick={() => setIsOpen(!isOpen)}
-              to="/"
+              to="/browse"
               className="block text-white  md:inline-block hover:text-red-700 px-3 py-3 md:border-none"
             >
               Home
             </Link>
             <Link
               onClick={() => setIsOpen(!isOpen)}
-              to="/"
+              to="/movies"
               className="block text-white md:inline-block hover:text-red-700 px-3 py-3 md:border-none"
             >
               Movies
             </Link>
-            <Link
-              onClick={() => setIsOpen(!isOpen)}
-              to="/"
-              className="block text-white md:inline-block hover:text-red-700 px-3 py-3 md:border-none"
-            >
-              My List
-            </Link>
+            
           </div>
 
           <div
             className={`${
               isOpen ? "block" : "hidden"
-            } w-full md:w-auto md:flex text-right text-bold mt-5 md:mt-0 md:border-none`}
+            } w-full md:w-auto md:flex text-right text-bold md:mt-0 md:border-none`}
           >
-            <div className="block md:inline-block text-zinc-200 dark:text-white font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2">
-              Hello, displayName
+            <div className="block text-white md:inline-block px-3 py-3 md:border-none">
+              Hello, {user?.displayName}
             </div>
             <Link onClick={handleSignOut}
               to="/"
-              className="block md:inline-block text-zinc-200 dark:text-white hover:bg-red-700 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700"
+              className="block text-white md:inline-block hover:text-red-700 px-3 py-3 md:border-none"
             >
-              Sign Out
+              Log Out
             </Link>
           </div>
           </>)}

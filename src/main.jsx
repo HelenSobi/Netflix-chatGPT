@@ -2,11 +2,13 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter,RouterProvider } from "react-router-dom";
 import { Provider } from 'react-redux';
-import appStore from './store/appStore.jsx';
-import App from './App.jsx'
+import appStore from './store/appStore';
+import App from './App'
+import Browse from './pages/Browse'
+import Movies from './pages/Movies';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import './index.css'
-import Browse from './pages/Browse.jsx'
-import Home from './pages/Home.jsx'
 
 
 const router=createBrowserRouter([
@@ -14,10 +16,10 @@ const router=createBrowserRouter([
     path:"/",
     element:<App/>,
   },
-  // {
-  //   path:"/home",
-  //   element:<Home/>,
-  // },
+  {
+    path:"/movies",
+    element:<Movies/>,
+  },
   {
     path:"/browse",
     element:<Browse/>,
