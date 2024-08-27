@@ -4,11 +4,11 @@ import VideoBg from "./VideoBg";
 const VideoContainer = () => {
 
     const movies=useSelector(store => store.movies?.nowPlayingMovies);
-    if(!movies) return;
+    if (!movies || !Array.isArray(movies) || movies.length === 0) return null;
     const {id,title, overview}=movies[1];
     return (
         <>
-        <section className="relative lg:h-screen text-white overflow-hidden">
+        <section className="relative h-full sm:h-[300px] md:h-[500px] lg:h-[600px] text-white overflow-hidden">
             <VideoBg movieId={id}/>
             {/* Gradient overlay with adjusted z-index to layer above the video */}
             <div className="absolute inset-0 bg-gray-900/95 sm:bg-transparent sm:from-gray-900/95 sm:to-gray-900/25 ltr:sm:bg-gradient-to-r rtl:sm:bg-gradient-to-l z-10"></div>

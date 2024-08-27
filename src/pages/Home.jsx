@@ -1,9 +1,7 @@
-import NavBarHeader from '../components/NavBarHeader';
 import Login from "../components/Login";
 import {HOME_BG_URL} from "../constants/constants_img";
 
 function Home() {
-
   return ( 
     <main>
     
