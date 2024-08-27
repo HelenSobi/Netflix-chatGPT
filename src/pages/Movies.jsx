@@ -10,7 +10,7 @@ const Movies=()=>{
     useTopRatedMovies();
     return (        
         <>
-        <NavBarHeader background="bg-black"/>
+        {/* <NavBarHeader background="bg-black"/> */}
         <div className="pt-[85px]">
         <NowPlayingSlider/>
         <PopularMoviesSlider/>

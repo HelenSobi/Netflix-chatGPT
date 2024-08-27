@@ -1,3 +1,9 @@
+MovieFinder
+
+##### React JS, Tailwind CSS ########
+
+FilmFindr
+
 Create React project using the following command
 `npm create vite@latest project_name -- --template react`
 

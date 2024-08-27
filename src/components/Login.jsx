@@ -32,7 +32,7 @@ const Login = () => {
                   }).then(() => {
                     const {uid, email, displayName} = auth.currentUser;
                     dispatch(createUser({uid:uid,email:email, displayName:displayName})); 
-                    navigate("/browse");
+                    navigate("/home");
                   }).catch((error) => {
                     console.log(error);
                   });
@@ -45,7 +45,7 @@ const Login = () => {
             signInWithEmailAndPassword(auth, email.current.value,password.current.value)
             .then((userCredential) => {
                 const user = userCredential.user;
-                navigate("/browse");
+                navigate("/home");
             })
             .catch((error) => {
                 const errorMessage = error.message;

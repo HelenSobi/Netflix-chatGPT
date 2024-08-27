@@ -8,7 +8,6 @@ const Browse = () => {
     useNowPlayingMovies();
     return (
         <>
-        <NavBarHeader/>
         <VideoContainer/>
         <NowPlayingSlider/>
         </>

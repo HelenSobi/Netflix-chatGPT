@@ -37,9 +37,26 @@ const NavBarHeader = ({background = null}) => {
     
       <header className={`absolute z-50 w-full ${background} ${isOpen && "bg-black"}`}>
         <nav className="flex flex-wrap items-center justify-between p-3">
-          <Link to="/browse" className="flex items-center">
+          <Link to="/home" className="flex items-center">
             <img src={LOGO} className="w-24 md:w-40" alt="Netflix Logo" />
           </Link>
+          <Link to="/login" className="inline-block rounded bg-red-600 px-6 md:px-12 py-3 text-sm font-medium text-white shadow hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto">
+            LOGIN
+          </Link>
+          <Link
+              onClick={() => setIsOpen(!isOpen)}
+              to="/home"
+              className="block text-white  md:inline-block hover:text-red-700 px-3 py-3 md:border-none"
+            >
+              Home
+            </Link>
+            <Link
+              onClick={() => setIsOpen(!isOpen)}
+              to="/movies"
+              className="block text-white md:inline-block hover:text-red-700 px-3 py-3 md:border-none"
+            >
+              Movies
+            </Link>
           {user && ( <>
           <div className="block md:hidden">
             <button
