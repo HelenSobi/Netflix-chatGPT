@@ -11,22 +11,11 @@ Create React project using the following command
 ### install react-router-dom
 `npm i -D react-router-dom`
 
-### install firebase for authentication and hosting
-
-`npm install firebase`
-
-### create firebase project in firebase console
-
-### setup authentication method email/password
-
-### install firebase CLI
-`npm install -g firebase-tools`
-
 ### install react slick-slider
 
 `npm install react-slick`
 
-Also install slick-carousel for css and font
+### Also install slick-carousel for css and font
 `npm install slick-carousel`
 
 ### Import css files
@@ -38,6 +27,37 @@ Also install slick-carousel for css and font
 
 ### Bind to react
 `npm install react-redux`
+
+### install .env variables to secure API key
+`npm i dotenv`
+
+ create a .env file to root of project directory
+
+ ## Define your API KEY
+ `VITE_API_KEY = `
+
+Ignore the `.env` file to `.gitignore`
+ 
+Access the API key in your code
+
+`import.meta.env.VITE_API_KEY`
+
+### install firebase for authentication and hosting
+
+`npm install firebase`
+
+### create firebase project in firebase console
+
+### setup authentication method email/password
+
+create `firebase.jsx` file and copy `firebaseConfig` from the firebase console
+
+### Initialize Firebase Authentication and get a reference to the service
+
+`export const auth = getAuth(app);`
+
+### install firebase CLI
+`npm install -g firebase-tools`
 
 ###### Steps for deployment
 
